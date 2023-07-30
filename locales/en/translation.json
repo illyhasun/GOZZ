@@ -1,0 +1,22 @@
+{
+  "productCreated": "Product was successfully created",
+  "productRemoved": "Product successfully deleted",
+  "productNotFound": "Product not found",
+  "productUpdated": "The product has been successfully updated",
+
+  "title": "Product title must have at least 3 characters",
+  "description": "Product description must have at least 3 characters",
+  "photo": "Photo must exist",
+  "photoType": "Invalid image type. Allowed types are: ",
+  "photoSize": "File size exceeds the maximum limit of 5MB.",
+
+  "name": "Name must have at least 3 characters",
+  "mail": "enter the existing and email",
+  "phone": "enter the existing and phone number",
+
+  "form": "Thank you for leaving a request",
+
+  "access": "You do not have access",
+
+  "smthWrong": "Something went wrong"
+}

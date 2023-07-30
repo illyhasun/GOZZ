@@ -1,0 +1,23 @@
+{
+  "productCreated": "Produkt byl úspěšně vytvořen",
+  "productRemoved": "Produkt byl úspěšně smazán",
+  "productNotFound": "Produkt nebyl nalezen",
+  "productUpdated": "Produkt byl úspěšně aktualizován",
+
+  "title": "Název produktu musí mít alespoň 3 znaky",
+  "description": "Popis produktu musí mít minimálně 3 znaky",
+  "photo": "Photo musi existovat",
+  "photoType": "Nesprávný typ obrázku. Povolené typy jsou: ",
+  "photoSize": "Velikost souboru přesahuje maximální limit 5 MB",
+
+  "name": "Jmeno musí musí mít alespoň 3 znaky",
+  "mail": "Zadejte existující a e-mail",
+  "phone": "Zadejte existující a telefonní číslo",
+
+  "access": "Nemáte přístup",
+
+  "form": "Děkujeme vám za zaslání formuláře",
+
+  "smthWrong": "Něco se pokazilo"
+
+}

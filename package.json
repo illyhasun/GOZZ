@@ -1,0 +1,41 @@
+{
+  "name": "gozz",
+  "version": "1.0.0",
+  "description": "GOZZ salad",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/illyhasun/GOZZ.git"
+  },
+  "keywords": [
+    "gozz",
+    "salad"
+  ],
+  "author": "Illia Rolia <illyha9sun@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/illyhasun/GOZZ/issues"
+  },
+  "homepage": "https://github.com/illyhasun/GOZZ#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.9",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "i18next": "^23.3.0",
+    "i18next-express-middleware": "^2.0.0",
+    "i18next-http-middleware": "^3.3.2",
+    "i18next-node-fs-backend": "^2.1.3",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.4",
+    "nodemon": "^3.0.1"
+  }
+}

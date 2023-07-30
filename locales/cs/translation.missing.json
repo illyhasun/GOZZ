@@ -1,0 +1,17 @@
+{
+  "Photo is required": {
+    "": "Photo is required."
+  },
+  "Cannot read properties of undefined (reading 'mimetype')": "Cannot read properties of undefined (reading 'mimetype')",
+  "Cannot read properties of undefined (reading 'size')": "Cannot read properties of undefined (reading 'size')",
+  "smthWrongdkk": "smthWrongdkk",
+  "ProductNotfound": "ProductNotfound",
+  "productNotfound": "productNotfound",
+  "name": "name",
+  "mail": "mail",
+  "phone": "phone",
+  "nameValidationMessage": "nameValidationMessage",
+  "mailValidationMessage": "mailValidationMessage",
+  "phoneValidationMessage": "phoneValidationMessage",
+  "emailValidationMessage": "emailValidationMessage"
+}
