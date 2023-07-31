@@ -49,6 +49,7 @@ const determineUserLanguage = (req, res, next) => {
 // Додайте middleware до вашого Express додатку перед роутами
 app.use(determineUserLanguage);
 
+app.use('/uploads', express.static('uploads'));
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/product', require('./routes/productRoutes'));
 app.use('/api/form', require('./routes/requestRoutes'));

@@ -77,7 +77,7 @@ router.post('/create', auth, upload.single('photo'), ProductValidationRules, asy
             if (req.file) {
                 fs.unlinkSync(req.file.path)
             }
-            
+
             return res.status(400).json({ errors: errors })
         }
 
@@ -111,22 +111,23 @@ router.post('/create', auth, upload.single('photo'), ProductValidationRules, asy
 router.get('/get', async (req, res) => {
     try {
         const supportedLanguages = ['en', 'cs', 'uk', 'ru'];
-        const preferredLanguages = req.headers['accept-language'] || '';
-        const languages = preferredLanguages.split(',').map(lang => lang.split(';')[0].trim());
-        let lang = 'cs';
-
-        for (const preferredLang of languages) {
-            if (supportedLanguages.includes(preferredLang)) {
-                lang = preferredLang;
-                break;
-            } else {
-                const baseLang = preferredLang.split('-')[0];
-                if (supportedLanguages.includes(baseLang)) {
-                    lang = baseLang;
-                    break;
-                }
-            }
+        let lang = req.query.lang || req.language || 'cs'; // Використовуйте req.language для визначення мови
+        lang = lang.split('-')[0] || 'cs';
+        if (!supportedLanguages.includes(lang)) {
+            lang = 'cs'
         }
+        // for (const preferredLang of languages) {
+        //     if (supportedLanguages.includes(preferredLang)) {
+        //         lang = preferredLang;
+        //         break;
+        //     } else {
+        //         const baseLang = preferredLang.split('-')[0];
+        //         if (supportedLanguages.includes(baseLang)) {
+        //             lang = baseLang;
+        //             break;
+        //         }
+        //     }
+        // }
 
         const products = await Product.find({}, { photo: 1, [lang]: 1 }).lean();
 
@@ -218,7 +219,7 @@ router.put('/update', auth, upload.single('photo'), ProductValidationRules, asyn
         res.status(201).json({ message: req.t('productUpdated'), product: product })
 
     } catch (error) {
-
+        console.log(error)
         res.status(500).json({ message: req.t('SmthWrong'), error: error.message })
 
     }

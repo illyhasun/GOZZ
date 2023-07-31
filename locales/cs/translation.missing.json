@@ -13,5 +13,7 @@
   "nameValidationMessage": "nameValidationMessage",
   "mailValidationMessage": "mailValidationMessage",
   "phoneValidationMessage": "phoneValidationMessage",
-  "emailValidationMessage": "emailValidationMessage"
+  "emailValidationMessage": "emailValidationMessage",
+  "SmthWrong": "SmthWrong",
+  "InvalidLanguage": "InvalidLanguage"
 }

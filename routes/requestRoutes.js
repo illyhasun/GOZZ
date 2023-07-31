@@ -58,6 +58,7 @@ router.post('/customer',
 
         res.status(200).json({ message: req.t('form') });
     } catch (error) {
+        console.log(error)
         res.status(500).json({ error: req.t('smthWrong') });
     }
 });
