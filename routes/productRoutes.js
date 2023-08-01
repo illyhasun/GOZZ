@@ -110,8 +110,8 @@ router.post('/create', auth, upload.single('photo'), ProductValidationRules, asy
 
 router.get('/get', async (req, res) => {
     try {
-        const supportedLanguages = ['en', 'cs', 'uk', 'ru'];
-        let lang = req.query.lang || req.language || 'cs'; // Використовуйте req.language для визначення мови
+        const supportedLanguages = ['en', 'cs', 'uk', 'ru']
+        let lang = req.query.lang || req.language || 'cs'
         lang = lang.split('-')[0] || 'cs';
         if (!supportedLanguages.includes(lang)) {
             lang = 'cs'
@@ -135,7 +135,7 @@ router.get('/get', async (req, res) => {
 
     } catch (e) {
         console.log(e);
-        return res.status(400).json({ message: req.t('SmthWrong') });
+        return res.status(400).json({ message: req.t('SmthWrong') })
     }
 });
 
@@ -167,62 +167,62 @@ router.delete('/delete', auth, async (req, res) => {
 
     }
 })
-router.put('/update', auth, upload.single('photo'), ProductValidationRules, async (req, res) => {
-    try {
+// router.put('/update', auth, upload.single('photo'), ProductValidationRules, async (req, res) => {
+//     try {
 
-        const errors = validationResult(req)
+//         const errors = validationResult(req)
 
-        if (!errors.isEmpty()) {
-            if (req.file) {
-                fs.unlinkSync(req.file.path)
-            }
-            return res.status(400).json({ errors: errors.array() })
-        }
+//         if (!errors.isEmpty()) {
+//             if (req.file) {
+//                 fs.unlinkSync(req.file.path)
+//             }
+//             return res.status(400).json({ errors: errors.array() })
+//         }
 
-        const { productId, cs, en, uk, ru } = req.body;
+//         const { productId, cs, en, uk, ru } = req.body;
 
-        if (!mongoose.Types.ObjectId.isValid(productId)) {
-            if (req.file) {
-                fs.unlinkSync(req.file.path)
-            }
-            return res.status(400).json({ message: 'Invalid product ID format' })
-        }
+//         if (!mongoose.Types.ObjectId.isValid(productId)) {
+//             if (req.file) {
+//                 fs.unlinkSync(req.file.path)
+//             }
+//             return res.status(400).json({ message: 'Invalid product ID format' })
+//         }
 
-        const product = await Product.findById(productId)
+//         const product = await Product.findById(productId)
 
-        if (!product) {
-            if (req.file) {
-                fs.unlinkSync(req.file.path)
-            }
-            return res.status(404).json({ message: req.t('productNotFound') })
-        }
+//         if (!product) {
+//             if (req.file) {
+//                 fs.unlinkSync(req.file.path)
+//             }
+//             return res.status(404).json({ message: req.t('productNotFound') })
+//         }
 
-        const newPhoto = req.file ? '/uploads/' + req.file.filename : null
+//         const newPhoto = req.file ? '/uploads/' + req.file.filename : null
 
-        if (newPhoto && product.photo) {
-            fs.unlinkSync('uploads/' + product.photo.replace('/uploads/', ''));
-        }
+//         if (newPhoto && product.photo) {
+//             fs.unlinkSync('uploads/' + product.photo.replace('/uploads/', ''));
+//         }
 
-        product.cs.title = cs.title;
-        product.cs.description = cs.description;
-        product.en.title = en.title;
-        product.en.description = en.description;
-        product.uk.title = uk.title;
-        product.uk.description = uk.description;
-        product.ru.title = ru.title;
-        product.ru.description = ru.description;
-        product.photo = newPhoto;
+//         product.cs.title = cs.title;
+//         product.cs.description = cs.description;
+//         product.en.title = en.title;
+//         product.en.description = en.description;
+//         product.uk.title = uk.title;
+//         product.uk.description = uk.description;
+//         product.ru.title = ru.title;
+//         product.ru.description = ru.description;
+//         product.photo = newPhoto;
 
 
-        await product.save();
+//         await product.save();
 
-        res.status(201).json({ message: req.t('productUpdated'), product: product })
+//         res.status(201).json({ message: req.t('productUpdated'), product: product })
 
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({ message: req.t('SmthWrong'), error: error.message })
+//     } catch (error) {
+//         console.log(error)
+//         res.status(500).json({ message: req.t('SmthWrong'), error: error.message })
 
-    }
-})
+//     }
+// })
 
 module.exports = router;
