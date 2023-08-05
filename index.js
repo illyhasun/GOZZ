@@ -27,8 +27,9 @@ i18next
       addPath: path.join(__dirname, 'locales', '{{lng}}', '{{ns}}.missing.json')
     },
     detection: {
-      order: ['header', 'querystring'], // Adjust the order if necessary
-      lookupHeader: 'accept-language', // Use 'accept-language' header for language detection
+      order: ['querystring', 'header'], // Change the order to look for language in querystring first
+      lookupQuerystring: 'lang', // Set the query parameter name for language detection
+      lookupHeader: 'accept-language', // Use 'accept-language' header for fallback language detection
       caches: ['cookie'],
     },
     fallbackLng: 'cs',
@@ -36,17 +37,19 @@ i18next
     saveMissing: true
   });
 
-// app.use(i18nextMiddleware.handle(i18next));
 
-const determineUserLanguage = (req, res, next) => {
-  const language = req.headers['accept-language'];
-  // Тут ви можете додатково обробити значення `language`, якщо потрібно
-  // Наприклад, розібрати рядок, якщо він містить декілька мов або інші маніпуляції з мовою
-  req.language = language;
-  i18nextMiddleware.handle(i18next)(req, res, next);
-};
+  const determineUserLanguage = (req, res, next) => {
+    if (req.query.lang) {
+      req.language = req.query.lang;
+      return i18nextMiddleware.handle(i18next)(req, res, next);
+    }
+  
+    // If there's no 'lang' in the query parameter, fall back to header language detection
+    const language = req.headers['accept-language'];
+    req.language = language;
+    i18nextMiddleware.handle(i18next)(req, res, next);
+  };
 
-// Додайте middleware до вашого Express додатку перед роутами
 app.use(determineUserLanguage);
 
 app.use('/uploads', express.static('uploads'));
@@ -59,6 +62,7 @@ async function start() {
     await mongoose.connect(config.get('mongoUri'));
     app.listen(PORT, () => console.log(`Application has been started on port ${PORT}`));
   } catch (e) {
+    console.log(e)
     process.exit(1);
   }
 }

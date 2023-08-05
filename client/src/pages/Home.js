@@ -1,9 +1,18 @@
 import React from 'react'
-import Catalog from '../components/Catalog';
+import Preview from '../components/Preview'
+import WhyUs from '../components/WhyUs'
+import Catalog from '../components/Catalog'
+import Form from '../components/Form'
+
 
 
 export default function Home() {
     return (
-        <Catalog />
+        <>
+            <Preview />
+            <WhyUs />
+            <Catalog />
+            <Form />
+        </>
     )
 }

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHttp } from '../hooks/useHttpHook';
+import Preloader from '../components/Preloader';
 
 const CreateProduct = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { req, loading, error, message } = useHttp();
   const [formValues, setFormValues] = useState({
     csTitle: '',
@@ -20,7 +21,6 @@ const CreateProduct = () => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormValues((prevValues) => ({ ...prevValues, [name]: value }));
-    console.log(value)
   };
 
   const handlePhotoChange = (event) => {
@@ -29,7 +29,7 @@ const CreateProduct = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+ 
     try {
       const formData = new FormData();
       formData.append('cs[title]', formValues.csTitle);
@@ -41,9 +41,7 @@ const CreateProduct = () => {
       formData.append('ru[title]', formValues.ruTitle);
       formData.append('ru[description]', formValues.ruDescription);
       formData.append('photo', formValues.photo);
-
-    console.log(formData)
-      const result = await req('/api/product/create', 'POST', formData);
+      const result = await req(`/api/product/create?lang=${i18n.language}`, 'POST', formData);
 
       // Handle success response, e.g., show a success message
       console.log(result);
@@ -55,6 +53,7 @@ const CreateProduct = () => {
 
   return (
     <div>
+
       <h1>{('createProduct')}</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -135,13 +134,16 @@ const CreateProduct = () => {
         </div>
         <div>
           <label>{t('photo')}</label>
-          <input type="file" name="photo" accept="image/jpeg, image/png" onChange={handlePhotoChange} />
+          <input type="file" name="photo" accept="image/jpeg, image/png" onChange={handlePhotoChange} required/>
         </div>
         <button type="submit" disabled={loading}>
           {loading ? t('creatingProduct') : t('createProduct')}
         </button>
-        {error && <div>Error: {error.message}</div>}
-        {message && <div>{message}</div>}
+        {loading ? <Preloader /> :
+                    message && <li className='err'>{message}</li>}
+                {error && error.errors.map((err, index) => (
+                    <li className='err' key={index}>{err.msg}</li>
+                ))}        {/* {message && <div>{message}</div>} */}
       </form>
     </div>
   );

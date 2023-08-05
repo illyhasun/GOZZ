@@ -116,18 +116,6 @@ router.get('/get', async (req, res) => {
         if (!supportedLanguages.includes(lang)) {
             lang = 'cs'
         }
-        // for (const preferredLang of languages) {
-        //     if (supportedLanguages.includes(preferredLang)) {
-        //         lang = preferredLang;
-        //         break;
-        //     } else {
-        //         const baseLang = preferredLang.split('-')[0];
-        //         if (supportedLanguages.includes(baseLang)) {
-        //             lang = baseLang;
-        //             break;
-        //         }
-        //     }
-        // }
 
         const products = await Product.find({}, { photo: 1, [lang]: 1 }).lean();
 
