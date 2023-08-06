@@ -109,7 +109,16 @@ header ul li:last-child {
 header div ul li {
   margin-right: 45px;
 }
-
+header div ul li div a{
+  margin-right: 20px;
+  font-size: 26px;
+}
+header div ul li div a:last-child{
+  margin-right: 0;
+}
+.logo-text{
+  font-size: 45px;
+}
 .logo {
   width: 100px;
   height: 35px;
@@ -142,7 +151,7 @@ header div ul li {
   .burger {
     display: block;
     position: absolute;
-    top: 27px;
+    top: 32px;
     right: 10%;
     z-index: 10;
   }
@@ -925,7 +934,7 @@ header div ul li {
   margin: 10px 0 0 20px;
 }
 
-.message {
+.form-container > .message {
   color: #667300;
   font-size: 36px;
   font-family: Bolt;
@@ -1148,6 +1157,21 @@ footer ul li:last-child {
   margin-right: 0;
 }
 
+.logo-text{
+  font-size: 45px;
+}
+.social-networks a{
+  font-size: 26px;
+  margin-right: 20px
+}
+.social-networks a:last-child{
+ margin: 0;
+}
+
+footer ul li div a:last-child {
+  margin-right: 0;
+}
+
 @media screen and (max-width: 920px) {
   footer {
     padding: 20px 10%;
@@ -1214,14 +1238,55 @@ footer ul li:last-child {
   }
 }
 
+/* ///////////////////////////// */
+/* Auth */
+/* ///////////////////////////// */
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  /* Adjust this value as needed */
+}
+
+.auth-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-content h3 {
+  font-family: Regular;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.auth-content input {
+  width: 300px;
+  background-color: #F3F9E6;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.auth-content .leaf_button {
+  font-size: 24px;
+  padding: 11px 40px;
+}
 
 /* ///////////////////////////// */
 /* CreateProduct */
 /* ///////////////////////////// */
 
-/* .create-container h3{
-  margin: 100x 0;
-} */
+.create-container{
+  margin-bottom: 100px;
+}
+.create-container > .message {
+  color: #667300;
+  font-size: 20px;
+  padding: 20px 0;
+}
+
 .create-container h3 {
   font-size: 36px;
   margin: 50px 0;
@@ -1240,11 +1305,13 @@ footer ul li:last-child {
   flex-direction: column;
   width: 22.5%;
 }
+
 .create-container form .inputs label {
   color: #667300;
   font-size: 16px;
   padding: 20px 10px;
 }
+
 .create-container form .inputs div input {
   padding: 20px;
   background-color: #F3F9E6;
@@ -1258,15 +1325,18 @@ footer ul li:last-child {
   border-radius: 10px;
   height: 300px;
 }
+
 .create-container form .send-product {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.create-container form .send-product .leaf_button{
+
+.create-container form .send-product .leaf_button {
   font-size: 24px;
   padding: 11px 40px;
 }
+
 .create-container form .send-product input {
   font-size: 20px;
 }
@@ -1276,22 +1346,27 @@ footer ul li:last-child {
   .create-container form .inputs {
     flex-direction: column;
   }
+
   .create-container form .inputs div {
     width: 100%;
   }
+
   .create-container form .send-product {
     display: block;
     width: 100%;
   }
-  .create-container form .send-product .leaf_button{
+
+  .create-container form .send-product .leaf_button {
     font-size: 18px;
     padding: 11px 40px;
     margin-top: 20px;
     display: block;
   }
+
   .create-container form .send-product input {
     font-size: 14px;
   }
+
   .create-container h3 {
     font-size: 24px;
   }

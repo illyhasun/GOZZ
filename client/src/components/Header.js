@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +14,7 @@ export default function Header() {
     }
     setNav(false)
   };
-  const handleNav = () =>{
+  const handleNav = () => {
     setNav(false)
   }
 
@@ -45,16 +45,16 @@ export default function Header() {
     <div className='header-container'>
       <header>
         <ul>
-          <li><NavLink to='/'><img className="logo" src="/images/logo.svg" alt="Kert" /></NavLink></li>
+          <li><NavLink to='/' className='logo-text'><img className="logo" src="/images/logo.svg" alt="Kert" /></NavLink></li>
           <li className='hide' onClick={(e) => handleNavLinkClick(e, 'catalog')}><NavLink to='/'>Our product</NavLink></li>
           <li className='hide' onClick={(e) => handleNavLinkClick(e, 'form')}><NavLink to='/'>Contact us</NavLink></li>
         </ul>
         <div className={nav ? 'not-active-menu menu-container' : 'active-menu menu-container'}>
           <ul>
 
-            <li className='display' onClick={(e) => handleNavLinkClick(e, 'catalog')}>Our product</li>
+            <li className='display' onClick={(e) => handleNavLinkClick(e, 'catalog')}><NavLink to="/">Our product</NavLink></li>
             {/* <li className='display'><a href="#catalog">About us</a></li> */}
-            <li className='display' onClick={(e) => handleNavLinkClick(e, 'form')}>Contact us</li>
+            <li className='display' onClick={(e) => handleNavLinkClick(e, 'form')}><NavLink to="/">Contact us</NavLink></li>
             {auth.isAuthenticated && (
               <>
                 <li><NavLink to="/create" onClick={handleNav}>Create</NavLink></li>
@@ -72,9 +72,9 @@ export default function Header() {
               ))}
             </select></li>
             <li><div>
-              <img className="icon" src="/icons/facebook.svg" alt="Kert" />
-              <img className="icon" src="/icons/viber.svg" alt="Kert" />
-              <img className="icon" src="/icons/instagram.svg" alt="Kert" />
+              <a href='https://www.facebook.com' target="_blank" rel="noopener noreferrer"><img className="icon" src="/icons/facebook.svg" alt="Kert" /></a>
+              <a href='https://www.viber.com/ua/' target="_blank" rel="noopener noreferrer"><img className="icon" src="/icons/viber.svg" alt="Kert" /></a>
+              <a href='https://www.instagram.com' target="_blank" rel="noopener noreferrer"><img className="icon" src="/icons/instagram.svg" alt="Kert" /></a>
             </div></li>
           </ul>
         </div>

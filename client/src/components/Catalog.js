@@ -9,7 +9,6 @@ function Catalog() {
   const { t, i18n } = useTranslation()
   const { req, loading } = useHttp();
   const [data, setData] = useState([]);
-  const [totalProducts, setTotalProducts] = useState(0);
   const catalogRef = useRef(null)
 
 
@@ -21,20 +20,22 @@ function Catalog() {
   const [selectedProductWindow, setSelectedProductWindow] = useState(null);
   const [isDetailWindowOpen, setIsDetailWindowOpen] = useState(false);
 
+  const ReserveCabbage = (e, target) => {
+    e.preventDefault();
+    const element = document.getElementById(target);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    closeDetailWindow()
+  };
+
 
   useEffect(() => {
-    // Function to update the number of visible products based on screen width
     const updateVisibleProductsPerRow = () => {
       setVisibleProducts(window.innerWidth < 600 ? 3 : (window.innerWidth < 1000 ? 4 : 6));
     };
-
-    // Initial call to set the correct number of products on component mount
     updateVisibleProductsPerRow();
-
-    // Attach event listener to update on screen width changes
     window.addEventListener('resize', updateVisibleProductsPerRow);
-
-    // Clean up the event listener on component unmount
     return () => window.removeEventListener('resize', updateVisibleProductsPerRow);
   }, []);
 
@@ -93,7 +94,7 @@ function Catalog() {
           <Preloader />
         ) : (
 
-          data.map((product, index) => (
+          data?.map((product, index) => (
             <div
               key={product._id}
               className={`products ${index >= visibleProducts ? 'hidden-product' : ''}`}
@@ -134,7 +135,7 @@ function Catalog() {
                 <h2>{selectedProductWindow[i18n.language]?.title}</h2>
                 <h4>{selectedProductWindow[i18n.language]?.description}</h4>
                 <img className='close' onClick={closeDetailWindow} src={window.innerWidth < 1030 ? '/icons/close.svg' : '/icons/close_green.svg'} alt='close' />
-                <button className='leaf_button'>Reserve</button>
+                <button className='leaf_button' onClick={(e) => ReserveCabbage(e, 'form')}>Reserve</button>
               </div>
             </div>
             <div className={`window-overlay ${isDetailWindowOpen ? "active" : ""}`} onClick={() => closeDetailWindow(false)}></div>

@@ -11,44 +11,40 @@ export default function Auth() {
 
   const auth = useContext(AuthContext)
 
-  const { loading, req, error, message } = useHttp()
+  const { loading, req, error } = useHttp()
   const [form, setForm] = useState({ username: '', password: '' })
 
   const changeHandler = e => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const registerHandler = async () => {
-    try {
-      const data = await req('/api/auth/register', 'POST', { ...form });
-      auth.login(data.token, data.userId, data.roles);
-      navigate('/');
-    } catch (e) {}
-  };
-  
+  // const registerHandler = async () => {
+  //   try {
+  //     const data = await req('/api/auth/register', 'POST', { ...form });
+  //     auth.login(data.token, data.userId, data.roles);
+  //     navigate('/');
+  //   } catch (e) { }
+  // };
+
   const loginHandler = async () => {
     try {
       const data = await req('/api/auth/login', 'POST', { ...form });
       auth.login(data.token, data.userId, data.roles);
       navigate('/');
-    } catch (e) {}
+    } catch (e) { }
   };
   return (
-    <div className='container'>
-      <div className='center-div'>
-        <h1>Авторизація</h1>
+    <div className='auth-container'>
+      <div className='auth-content'>
+        <h3>Авторизація</h3>
 
         <ul>
-          <ul>
-            {message && <li className='err'>{message}</li>}
-            {error && error.map((err, index) => (
-              <li className='err' key={index}>{err.msg}</li>
-            ))}
-          </ul>
+          {error && error.map((err, index) => (
+            <li className='err' key={index}>{err.msg}</li>
+          ))}
         </ul>
 
 
-        <div>
           <input
             placeholder='username'
             type='text'
@@ -66,25 +62,21 @@ export default function Auth() {
             onChange={changeHandler}
           />
 
-          <div className='buttons'>
-            <button
-              className='main-button'
+          <button
+            className='leaf_button'
             onClick={loginHandler}
             disabled={loading}
-            >
-              Ввійти
-            </button>
-            <button
+          >
+            Ввійти
+          </button>
+          {/* <button
               className='classic-button'
             onClick={registerHandler}
             disabled={loading}
             >
               Зареєструватися
-            </button>
-
-          </div>
+            </button> */}
         </div>
-      </div>
     </div>
   )
 }

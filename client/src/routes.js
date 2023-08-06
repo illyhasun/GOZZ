@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
+import Footer from './components/Footer'
 import Auth from './pages/Auth';
 import CreateProduct from './pages/CreateProduct';
 
@@ -29,8 +30,8 @@ export default function useRoutes(isAuthenticated) {
                     }
                 />
                 <Route path="*" element={<Navigate to="/" replace />} />
-
             </Routes>
+            <Footer />
         </>
     );
 }

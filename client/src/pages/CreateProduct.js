@@ -55,6 +55,11 @@ const CreateProduct = () => {
     <div className='create-container'>
 
       <h3>Створити Продукт</h3>
+      {loading ? <Preloader /> :
+          message && <li className='message'>{message}</li>}
+        {error && error.errors.map((err, index) => (
+          <li className='err' key={index}>{err.msg}</li>
+        ))}   
       <form onSubmit={handleSubmit}>
         <div className='inputs'>
           <div>
@@ -144,11 +149,6 @@ const CreateProduct = () => {
             {loading ? t('creatingProduct') : t('createProduct')}
           </button>
         </div>
-        {loading ? <Preloader /> :
-          message && <li className='err'>{message}</li>}
-        {error && error.errors.map((err, index) => (
-          <li className='err' key={index}>{err.msg}</li>
-        ))}        {/* {message && <div>{message}</div>} */}
       </form>
     </div>
   );

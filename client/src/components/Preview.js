@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React from 'react'
 import { useTranslation } from 'react-i18next';
 
 
@@ -10,7 +10,7 @@ export default function Preview() {
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      };
+      }; 
     return ( 
             <div className='preview'>
                 <div className='bg_group'>

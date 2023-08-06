@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
-    const [nav, setNav] = useState(false)
+    const { t, i18n } = useTranslation();
 
     const handleNavLinkClick = (e, target) => {
         e.preventDefault();
@@ -11,26 +11,22 @@ export default function Footer() {
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
-        setNav(false)
-    };
-
-    const { t, i18n } = useTranslation();
-
+    }
 
 
 
     return (
         <footer>
             <ul>
-                <li><NavLink to='/'><img className="logo" src="/images/logo.svg" alt="Kert" /></NavLink></li>
+                <li><NavLink to='/'><img className="logo-text" src="/images/logo.svg" alt="Kert" /></NavLink></li>
                 <li onClick={(e) => handleNavLinkClick(e, 'catalog')}>Our product</li>
                 <li onClick={(e) => handleNavLinkClick(e, 'form')}>Contact us</li>
             </ul>
             <ul>
-                <li><div>
-                    <img className="icon" src="/icons/facebook.svg" alt="Kert" />
-                    <img className="icon" src="/icons/viber.svg" alt="Kert" />
-                    <img className="icon" src="/icons/instagram.svg" alt="Kert" />
+                <li><div className='social-networks'>
+                    <a href='https://www.facebook.com' target="_blank" rel="noopener noreferrer"><img className="icon" src="/icons/facebook.svg" alt="facebook" /></a>
+                    <a href='https://www.viber.com/ua/' target="_blank" rel="noopener noreferrer"><img className="icon" src="/icons/viber.svg" alt="viber" /></a>
+                    <a href='https://www.instagram.com' target="_blank" rel="noopener noreferrer"><img className="icon" src="/icons/instagram.svg" alt="Instagram" /></a>
                 </div></li>
             </ul>
 
