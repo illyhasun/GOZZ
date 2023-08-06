@@ -1,0 +1,11 @@
+{
+    "port": 2341,
+    "baseUrl": "http://localhost:234",
+
+    "mongoUri": "mongodb+srv://illyhasun:superstrongPassword1234321superuper@cluster0.tqjp2gu.mongodb.net/?retryWrites=true&w=majority",
+
+    "jwtSecret": "very6897Strong3456786521PasswordIf67890youHackIt567895You78AreGay",
+
+    "gmail": "rolia.illia9@gmail.com",
+    "password": "kishwbsxprynaeec"
+}

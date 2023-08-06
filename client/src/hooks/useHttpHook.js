@@ -74,7 +74,6 @@ export const useHttp = () => {
 
       return data;
     } catch (e) {
-      console.log(e)
       setLoading(false);
       throw e;
     }

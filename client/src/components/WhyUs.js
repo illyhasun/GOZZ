@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function WhyUs() {
     return (
-        <div className='why-container'>
+        <div className='why-container' id='whyUs'>
             <div className='why-us'>
                 <h3>Why us?</h3>
                 <div className='why-bloks'>

@@ -29,7 +29,7 @@ const CreateProduct = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
- 
+
     try {
       const formData = new FormData();
       formData.append('cs[title]', formValues.csTitle);
@@ -52,98 +52,103 @@ const CreateProduct = () => {
   };
 
   return (
-    <div>
+    <div className='create-container'>
 
-      <h1>{('createProduct')}</h1>
+      <h3>Створити Продукт</h3>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>{t('csTitle')}</label>
-          <input
-            type="text"
-            name="csTitle"
-            value={formValues.csTitle}
-            onChange={handleInputChange}
-            required
-          />
+        <div className='inputs'>
+          <div>
+          <label>Чеська мова</label>
+            <input
+              placeholder='Назва салату'
+              type="text"
+              name="csTitle"
+              value={formValues.csTitle}
+              onChange={handleInputChange}
+              required
+            />
+            <textarea
+              placeholder='Опис салату'
+
+              name="csDescription"
+              value={formValues.csDescription}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+          <label>Англійська мова</label>
+
+            <input
+              placeholder='Назва салату'
+              type="text"
+              name="enTitle"
+              value={formValues.enTitle}
+              onChange={handleInputChange}
+              required
+            />
+            <textarea
+              placeholder='Опис салату'
+
+              name="enDescription"
+              value={formValues.enDescription}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+          <label>Українська мова</label>
+            <input
+              placeholder='Назва салату'
+
+              type="text"
+              name="ukTitle"
+              value={formValues.ukTitle}
+              onChange={handleInputChange}
+              required
+            />
+
+            <textarea
+              placeholder='Опис салату'
+              name="ukDescription"
+              value={formValues.ukDescription}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+          <label>Російська мова</label>
+
+            <input
+              placeholder='Назва салату'
+
+              type="text"
+              name="ruTitle"
+              value={formValues.ruTitle}
+              onChange={handleInputChange}
+              required
+            />
+            <textarea
+              placeholder='Опис салату'
+
+              name="ruDescription"
+              value={formValues.ruDescription}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
         </div>
-        <div>
-          <label>{t('csDescription')}</label>
-          <textarea
-            name="csDescription"
-            value={formValues.csDescription}
-            onChange={handleInputChange}
-            required
-          />
+        <div className='send-product'>
+          <input type="file" name="photo" accept="image/jpeg, image/png" onChange={handlePhotoChange} required />
+          <button type="submit" disabled={loading} className='leaf_button'>
+            {loading ? t('creatingProduct') : t('createProduct')}
+          </button>
         </div>
-        <div>
-          <label>{t('enTitle')}</label>
-          <input
-            type="text"
-            name="enTitle"
-            value={formValues.enTitle}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>{t('enDescription')}</label>
-          <textarea
-            name="enDescription"
-            value={formValues.enDescription}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>{t('ukTitle')}</label>
-          <input
-            type="text"
-            name="ukTitle"
-            value={formValues.ukTitle}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>{t('ukDescription')}</label>
-          <textarea
-            name="ukDescription"
-            value={formValues.ukDescription}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>{t('ruTitle')}</label>
-          <input
-            type="text"
-            name="ruTitle"
-            value={formValues.ruTitle}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>{t('ruDescription')}</label>
-          <textarea
-            name="ruDescription"
-            value={formValues.ruDescription}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>{t('photo')}</label>
-          <input type="file" name="photo" accept="image/jpeg, image/png" onChange={handlePhotoChange} required/>
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? t('creatingProduct') : t('createProduct')}
-        </button>
         {loading ? <Preloader /> :
-                    message && <li className='err'>{message}</li>}
-                {error && error.errors.map((err, index) => (
-                    <li className='err' key={index}>{err.msg}</li>
-                ))}        {/* {message && <div>{message}</div>} */}
+          message && <li className='err'>{message}</li>}
+        {error && error.errors.map((err, index) => (
+          <li className='err' key={index}>{err.msg}</li>
+        ))}        {/* {message && <div>{message}</div>} */}
       </form>
     </div>
   );

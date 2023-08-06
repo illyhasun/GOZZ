@@ -7,7 +7,6 @@ export default function Header() {
   const [nav, setNav] = useState(false)
 
   const handleNavLinkClick = (e, target) => {
-    console.log('work')
     e.preventDefault();
     const element = document.getElementById(target);
     if (element) {
@@ -15,6 +14,9 @@ export default function Header() {
     }
     setNav(false)
   };
+  const handleNav = () =>{
+    setNav(false)
+  }
 
   const lngs = {
     en: { nativeName: 'Engilsh' },
@@ -40,23 +42,23 @@ export default function Header() {
 
 
   return (
-    <div>
+    <div className='header-container'>
       <header>
         <ul>
-          <img className="logo" src="/images/logo.svg" alt="Kert" />
-          <li className='hide' onClick={(e) => handleNavLinkClick(e, 'catalog')}>Our product</li>
-          <li className='hide' onClick={(e) => handleNavLinkClick(e, 'form')}>Contact us</li>
+          <li><NavLink to='/'><img className="logo" src="/images/logo.svg" alt="Kert" /></NavLink></li>
+          <li className='hide' onClick={(e) => handleNavLinkClick(e, 'catalog')}><NavLink to='/'>Our product</NavLink></li>
+          <li className='hide' onClick={(e) => handleNavLinkClick(e, 'form')}><NavLink to='/'>Contact us</NavLink></li>
         </ul>
         <div className={nav ? 'not-active-menu menu-container' : 'active-menu menu-container'}>
           <ul>
 
-            <li className='display' onClick={(e) => handleNavLinkClick(e, 'catalog')}><a href="#catalog">Our product</a></li>
+            <li className='display' onClick={(e) => handleNavLinkClick(e, 'catalog')}>Our product</li>
             {/* <li className='display'><a href="#catalog">About us</a></li> */}
-            <li className='display' onClick={(e) => handleNavLinkClick(e, 'form')}><a href="#catalog">Contact us</a></li>
+            <li className='display' onClick={(e) => handleNavLinkClick(e, 'form')}>Contact us</li>
             {auth.isAuthenticated && (
               <>
-                <li><NavLink to="/create">Create</NavLink></li>
-                <li><a href="/" onClick={handleLogout}>Logout</a></li>
+                <li><NavLink to="/create" onClick={handleNav}>Create</NavLink></li>
+                <li><NavLink to="/" onClick={handleLogout}>Logout</NavLink></li>
               </>
             )}
             <li><select
