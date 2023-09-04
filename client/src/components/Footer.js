@@ -19,8 +19,8 @@ export default function Footer() {
         <footer>
             <ul>
                 <li><NavLink to='/'><img className="logo-text" src="/images/logo.svg" alt="Kert" /></NavLink></li>
-                <li onClick={(e) => handleNavLinkClick(e, 'catalog')}>Our product</li>
-                <li onClick={(e) => handleNavLinkClick(e, 'form')}>Contact us</li>
+                <li onClick={(e) => handleNavLinkClick(e, 'catalog')}>{t('OurProducts')}</li>
+                <li onClick={(e) => handleNavLinkClick(e, 'form')}>{t('ContactUs')}</li>
             </ul>
             <ul>
                 <li><div className='social-networks'>

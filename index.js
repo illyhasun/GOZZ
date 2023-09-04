@@ -17,7 +17,7 @@ app.use(express.json({ extended: true }))
 
 i18next
   .use(Backend)
-  .use(i18nextMiddleware.LanguageDetector) // Set up language detection middleware
+  .use(i18nextMiddleware.LanguageDetector)
   .init({
     // debug: true,
     backend: {
@@ -25,9 +25,9 @@ i18next
       addPath: path.join(__dirname, 'locales', '{{lng}}', '{{ns}}.missing.json')
     },
     detection: {
-      order: ['querystring', 'header'], // Change the order to look for language in querystring first
-      lookupQuerystring: 'lang', // Set the query parameter name for language detection
-      lookupHeader: 'accept-language', // Use 'accept-language' header for fallback language detection
+      order: ['querystring', 'header'],
+      lookupQuerystring: 'lang',
+      lookupHeader: 'accept-language',
       caches: ['cookie'],
     },
     fallbackLng: 'cs',
@@ -41,8 +41,6 @@ const determineUserLanguage = (req, res, next) => {
     req.language = req.query.lang;
     return i18nextMiddleware.handle(i18next)(req, res, next);
   }
-
-  // If there's no 'lang' in the query parameter, fall back to header language detection
   const language = req.headers['accept-language'];
   req.language = language;
   i18nextMiddleware.handle(i18next)(req, res, next);

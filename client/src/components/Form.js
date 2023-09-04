@@ -47,8 +47,8 @@ const Form = () => {
         <div className='form-container' ref={formRef}>
             <div className='form-content'>
                 <div className='form-text'>
-                    <h3 id='form'>Reserve your lettuce</h3>
-                    <h4>We'll call soon, all in good hands!</h4>
+                    <h3 id='form'>{t('FormH3')}</h3>
+                    <h4>{t('FormH4')}</h4>
                 </div>
                 <div className='form'>
                     <div className='div-form'>
@@ -61,7 +61,7 @@ const Form = () => {
                         <form onSubmit={sendHandler}>
                             <div className='form-group'>
                                 <input
-                                    placeholder='name *'
+                                    placeholder={t('formName')}
                                     type='text'
                                     name='name'
                                     value={form.name}
@@ -70,7 +70,7 @@ const Form = () => {
                                 />
 
                                 <input
-                                    placeholder='phone *'
+                                    placeholder={t('formPhone')}
                                     type='text'
                                     value={form.phone}
                                     name='phone'
@@ -80,7 +80,7 @@ const Form = () => {
                             </div>
                             <div className='mail'>
                                 <input
-                                    placeholder='mail *'
+                                    placeholder={t('formMail')}
                                     type='text'
                                     name='mail'
                                     value={form.mail}
@@ -90,7 +90,7 @@ const Form = () => {
                             </div>
                             <div className='textarea'>
                                 <textarea
-                                    placeholder='Text from you (Optional)'
+                                    placeholder={t('formText')}
                                     value={form.text}
                                     name='text'
                                     onChange={handleInputChange}
@@ -99,20 +99,18 @@ const Form = () => {
                             <div className='form-send'>
                                 <div className="checkbox">
                                     <input id="check2" type="checkbox" name="check" required />
-                                    <label htmlFor="check2">Consent process personal data *</label>
+                                    <label htmlFor="check2">{t('FormLabel')}</label>
                                 </div>
 
                                 <button
                                     className='leaf_button'
+                                    type='submit'
                                     disabled={loading}
                                 >
                                     {loading ? t('Sending') : t('Send')}
 
                                 </button>
-
                             </div>
-
-
                         </form>
                     </div>
                 </div>

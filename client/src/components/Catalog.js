@@ -86,8 +86,8 @@ function Catalog() {
   return (
     <div id='catalog' ref={catalogRef} className='catalog-container'>
       <div className='catalog-text'>
-        <h3>Our products</h3>
-        <h4>Click on product for details</h4>
+        <h3>{t('catalogH3')}</h3>
+        <h4>{t('catalogH4')}</h4>
       </div>
       <div className={`catalog ${isDetailWindowOpen ? 'catalog-detail-open' : ''}`}>
         {loading ? (
@@ -131,11 +131,11 @@ function Catalog() {
           <>
             <div className={isDetailWindowOpen ? "not-active-window detail-window-content" : "active-window window-container"}>
               <img src={selectedProductWindow?.photo} alt={selectedProductWindow?.title} />
-              <div>
+              <div className='product-info'>
                 <h2>{selectedProductWindow[i18n.language]?.title}</h2>
-                <h4>{selectedProductWindow[i18n.language]?.description}</h4>
+                <pre>{selectedProductWindow[i18n.language]?.description}</pre>
                 <img className='close' onClick={closeDetailWindow} src={window.innerWidth < 1030 ? '/icons/close.svg' : '/icons/close_green.svg'} alt='close' />
-                <button className='leaf_button' onClick={(e) => ReserveCabbage(e, 'form')}>Reserve</button>
+                <button className='leaf_button' onClick={(e) => ReserveCabbage(e, 'form')}>{t('DetailWindowButton')}</button>
               </div>
             </div>
             <div className={`window-overlay ${isDetailWindowOpen ? "active" : ""}`} onClick={() => closeDetailWindow(false)}></div>

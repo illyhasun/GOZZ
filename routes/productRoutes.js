@@ -49,19 +49,19 @@ const ProductValidationRules = [
     check('photo')
         .custom((value, { req }) => {
             if (!req.file) {
-                throw new Error(req.t('photo'))   //translation work
+                throw new Error(req.t('photo'))
             }
             return true
         })
         .custom((value, { req }) => {
             const allowedImageTypes = ['image/jpeg', 'image/png'];
             if (req.file && !allowedImageTypes.includes(req.file.mimetype)) {
-                throw new Error(req.t('photoType') + allowedImageTypes.join(', '))   //translation work
+                throw new Error(req.t('photoType') + allowedImageTypes.join(', '))
             }
 
             const maxFileSizeInBytes = 5 * 1024 * 1024;
             if (req.file && req.file.size > maxFileSizeInBytes) {
-                throw new Error('File size exceeds the maximum limit of 5MB.') //translation work
+                throw new Error('File size exceeds the maximum limit of 5MB.')
             }
 
             return true;
@@ -123,7 +123,7 @@ router.get('/get', async (req, res) => {
 
     } catch (e) {
         console.log(e);
-        return res.status(400).json({ message: req.t('SmthWrong') })
+        return res.status(500).json({ message: req.t('SmthWrong') })
     }
 });
 

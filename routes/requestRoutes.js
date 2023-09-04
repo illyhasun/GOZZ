@@ -14,9 +14,9 @@ const translateError = (errorMessageKey, { req }) => {
 
 router.post('/customer',
     [
-            check('name').isLength({ min: 3 }).withMessage((value, { req }) => req.t('name', { value })),
-            check('mail').isEmail().normalizeEmail().withMessage((value, { req }) => translateError('mail', { req })),
-          check('phone').isMobilePhone().withMessage((value, { req }) => translateError('phone', { req })),
+        check('name').isLength({ min: 3 }).withMessage((value, { req }) => req.t('name', { value })),
+        check('mail').isEmail().normalizeEmail().withMessage((value, { req }) => translateError('mail', { req })),
+        check('phone').isMobilePhone().withMessage((value, { req }) => translateError('phone', { req })),
     ], async (req, res) => {
 
         try {
@@ -44,7 +44,7 @@ router.post('/customer',
 
             const mailOptions = {
                 from: config.get('gmail'),
-                to: config.get('gmail'),
+                to: 'hukkristina2511@gmail.com',
                 subject: `Тут ${name} заявку залишив`,
                 text: `імя ${name} номер телефону ${phone}, пошта ${mail} текст: ${text} `,
             };

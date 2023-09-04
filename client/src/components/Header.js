@@ -46,15 +46,15 @@ export default function Header() {
       <header>
         <ul>
           <li><NavLink to='/' className='logo-text'><img className="logo" src="/images/logo.svg" alt="Kert" /></NavLink></li>
-          <li className='hide' onClick={(e) => handleNavLinkClick(e, 'catalog')}><NavLink to='/'>Our product</NavLink></li>
-          <li className='hide' onClick={(e) => handleNavLinkClick(e, 'form')}><NavLink to='/'>Contact us</NavLink></li>
+          <li className='hide' onClick={(e) => handleNavLinkClick(e, 'catalog')}><NavLink to='/'>{t('OurProducts')}</NavLink></li>
+          <li className='hide' onClick={(e) => handleNavLinkClick(e, 'form')}><NavLink to='/'>{t('ContactUs')}</NavLink></li>
         </ul>
         <div className={nav ? 'not-active-menu menu-container' : 'active-menu menu-container'}>
           <ul>
 
-            <li className='display' onClick={(e) => handleNavLinkClick(e, 'catalog')}><NavLink to="/">Our product</NavLink></li>
+            <li className='display' onClick={(e) => handleNavLinkClick(e, 'catalog')}><NavLink to="/">{t('OurProducts')}</NavLink></li>
             {/* <li className='display'><a href="#catalog">About us</a></li> */}
-            <li className='display' onClick={(e) => handleNavLinkClick(e, 'form')}><NavLink to="/">Contact us</NavLink></li>
+            <li className='display' onClick={(e) => handleNavLinkClick(e, 'form')}><NavLink to="/">{t('ContactUs')}</NavLink></li>
             {auth.isAuthenticated && (
               <>
                 <li><NavLink to="/create" onClick={handleNav}>Create</NavLink></li>
@@ -72,9 +72,9 @@ export default function Header() {
               ))}
             </select></li>
             <li><div>
-              <a href='https://www.facebook.com' target="_blank" rel="noopener noreferrer"><img className="icon" src="/icons/facebook.svg" alt="Kert" /></a>
-              <a href='https://www.viber.com/ua/' target="_blank" rel="noopener noreferrer"><img className="icon" src="/icons/viber.svg" alt="Kert" /></a>
-              <a href='https://www.instagram.com' target="_blank" rel="noopener noreferrer"><img className="icon" src="/icons/instagram.svg" alt="Kert" /></a>
+              <a href='https://www.facebook.com' target="_blank" rel="noopener noreferrer"><img className="icon" src="/icons/facebook.svg" alt="facebook salat" /></a>
+              <a href='https://www.viber.com/ua/' target="_blank" rel="noopener noreferrer"><img className="icon" src="/icons/viber.svg" alt="viber salat" /></a>
+              <a href='https://www.instagram.com' target="_blank" rel="noopener noreferrer"><img className="icon" src="/icons/instagram.svg" alt="instagram salat" /></a>
             </div></li>
           </ul>
         </div>

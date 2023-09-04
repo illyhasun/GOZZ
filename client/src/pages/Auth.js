@@ -14,9 +14,9 @@ export default function Auth() {
   const { loading, req, error } = useHttp()
   const [form, setForm] = useState({ username: '', password: '' })
 
-  const changeHandler = e => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
+  const changeHandler = event => {
+    const { name, value } = event.target;
+    setForm((prevValues) => ({ ...prevValues, [name]: value }));  }
 
   // const registerHandler = async () => {
   //   try {
@@ -26,10 +26,12 @@ export default function Auth() {
   //   } catch (e) { }
   // };
 
-  const loginHandler = async () => {
+  const loginHandler = async (event) => {
     try {
+      event.preventDefault();
+
       const data = await req('/api/auth/login', 'POST', { ...form });
-      auth.login(data.token, data.userId, data.roles);
+      auth.login(data.token, data.userId);
       navigate('/');
     } catch (e) { }
   };
@@ -44,11 +46,10 @@ export default function Auth() {
           ))}
         </ul>
 
-
+        <form onSubmit={loginHandler}>
           <input
             placeholder='username'
             type='text'
-            id='username'
             value={form.username}
             name='username'
             onChange={changeHandler}
@@ -56,27 +57,27 @@ export default function Auth() {
           <input
             placeholder='password'
             type='password'
-            id='password'
             value={form.password}
             name='password'
             onChange={changeHandler}
           />
 
           <button
+            type='submit'
             className='leaf_button'
-            onClick={loginHandler}
             disabled={loading}
           >
             Ввійти
           </button>
-          {/* <button
+        </form>
+        {/* <button
               className='classic-button'
             onClick={registerHandler}
             disabled={loading}
             >
               Зареєструватися
             </button> */}
-        </div>
+      </div>
     </div>
   )
 }

@@ -1,4 +1,33 @@
 {
-    "work": "funguje",
-    "unleash": "Popusťte uzdu vaření  <br/> Tvořivost"
+    "catalogH3": "Naše výrobky",
+    "catalogH4": "Kliknutím na produkt zobrazíte podrobnosti",
+    "DetailWindowButton": "Rezervovat",
+
+    "OurProducts": "Naše výrobky",
+    "ContactUs": "Kontaktovat",
+    
+    "FormH3": "Rezervujte si salát",
+    "FormH4": "Brzy se ozveme, vše je v dobrých rukou!",
+
+    "formName": "Jméno *",
+    "formPhone": "Telefonní číslo *",
+    "formMail": "Mail *",
+    "formText": "Zpráva od vás (Volitelné)",
+    "Send": "Odeslat",
+    "Sending": "Odeslání",
+    "FormLabel": "Souhlas se zpracováním osobních údajů *",
+
+    "PreviewH1": "Uvolněte kulinářskou <br/> kreativitu",
+    "PreviewH4": "Velkoobchodní dodávky exkluzivních salátových zelenin pro mistrovská díla vaší restaurace",
+    "PreviewButton": "Zanechat požadavek",
+    "PreviewH3": "Popis",
+
+    "whyUs": "Proč my?",
+    "whyUs1title": "Bezkonkurenční čerstvost",
+    "whyUs1desc": "Zůstaňte s námi ve spojení na sociálních sítích a získejte nejnovější informace a novinky. Sledujte nás nyní!",
+    "whyUs2title": "Rozmanitý výběr",
+    "whyUs2desc": "Vylepšete své kulinářské výtvory širokou škálou prvotřídní salátové zeleně, od jemné mikrozeleně až po robustní a exotické listy. ",
+    "whyUs3title": "Spolehliví partneři",
+    "whyUs4desc": "Spolehněte se na nás jako na spolehlivého velkoobchodního partnera, který vám zajistí stálé a včasné dodávky salátové zeleně nejvyšší kvality."
+
 }

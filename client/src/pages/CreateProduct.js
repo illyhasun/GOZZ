@@ -42,11 +42,7 @@ const CreateProduct = () => {
       formData.append('ru[description]', formValues.ruDescription);
       formData.append('photo', formValues.photo);
       const result = await req(`/api/product/create?lang=${i18n.language}`, 'POST', formData);
-
-      // Handle success response, e.g., show a success message
-      console.log(result);
     } catch (error) {
-      // Handle error, e.g., display error message
       console.error(error);
     }
   };

@@ -1,4 +1,39 @@
 {
-    "work": "work",
-    "unleash": "Unleash Culinary  <br/>  Creativity"
+    "catalogH3": "Our products",
+    "catalogH4": "Click on product for details",
+    "DetailWindowButton": "Reserve",
+
+    "OurProducts": "Our Products",
+    "ContactUs": "Contact Us",
+
+    "FormH3": "Reserve your lettuce",
+    "FormH4": "We'll call soon, all in good hands!",
+
+    "formName": "Name *",
+    "formPhone": "Phone number",
+    "formMail": "Mail *",
+    "formText": "Message from you (Optional)",
+    "Sending": "Sending",
+    "Send": "Send",
+    "FormLabel": "Consent process personal data *",
+
+    "PreviewH1":"Unleash Culinary  <br/>  Creativity",
+    "PreviewH4":"Wholesale Supply of Exclusive Salad Greens for Your Restaurant's Masterpieces",
+    "PreviewButton":"Leave request",
+    "PreviewH3":"Description",
+
+    "whyUs": "Why us?",
+    "whyUs1title":"Unrivaled Freshness",
+    "whyUs1desc":"Stay Connected with Us on Social Media for the Latest Updates and News. Follow Us Now!",
+    "whyUs2title":"Diverse Selection",
+    "whyUs2desc":"Elevate your culinary creations with a wide variety of premium salad greens, ranging from delicate microgreens to robust and exotic leaves. ",
+    "whyUs3title":"Reliable Partners",
+    "whyUs4desc":"Count on us as your trusted wholesale partner, providing consistent and timely deliveries of top-quality salad greens. "
+
+ 
+
+
+    
+
+
 }

@@ -11,8 +11,8 @@
   "photoSize": "File size exceeds the maximum limit of 5MB.",
 
   "name": "Name must have at least 3 characters",
-  "mail": "enter the existing and email",
-  "phone": "enter the existing and phone number",
+  "mail": "Enter the existing and email",
+  "phone": "Enter the existing and phone number",
 
   "form": "Thank you for leaving a request",
 
