@@ -15,7 +15,7 @@ i18next
     .use(LanguageDetector)
     .use(Backend)
     .init({
-        debug: true,
+        debug: false,
         fallbackLng: fallbackLng,
         detection: {
             order: ["header"],

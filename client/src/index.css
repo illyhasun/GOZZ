@@ -682,6 +682,7 @@ header div ul li div a:last-child{
   transform: translate(-50% -50%);
   border-radius: 10px 10px 10px 10px;
 }
+
 .detail-window-content>img {
   width: 50%;
   object-fit: cover;
