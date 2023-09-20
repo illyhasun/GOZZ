@@ -120,8 +120,8 @@ header div ul li div a:last-child{
   font-size: 45px;
 }
 .logo {
-  width: 100px;
-  height: 35px;
+  width: 200px;
+  height: 60px;
 }
 
 .icon {
@@ -682,6 +682,7 @@ header div ul li div a:last-child{
   transform: translate(-50% -50%);
   border-radius: 10px 10px 10px 10px;
 }
+
 .detail-window-content>img {
   width: 50%;
   object-fit: cover;

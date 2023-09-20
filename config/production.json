@@ -1,5 +1,6 @@
-{    "port": 80,
-    "baseUrl": "http://91.199.45.88",
+{
+    "port": 80,
+    "baseUrl": "http://91.199.45.88/",
 
     "mongoUri": "mongodb+srv://illyhasun:superstrongPassword1234321superuper@cluster0.tqjp2gu.mongodb.net/?retryWrites=true&w=majority",
 
