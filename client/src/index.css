@@ -121,7 +121,7 @@ header div ul li div a:last-child{
 }
 .logo {
   width: 200px;
-  height: 60px;
+  height: 45px;
 }
 
 .icon {
@@ -151,7 +151,7 @@ header div ul li div a:last-child{
   .burger {
     display: block;
     position: absolute;
-    top: 32px;
+    top: 40px;
     right: 10%;
     z-index: 10;
   }

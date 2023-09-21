@@ -1,19 +1,19 @@
 {
-    "short_name": "Kert",
+    "short_name": "GOZZ",
     "name": "Salad",
     "icons": [
       {
-        "src": "icon.png",
+        "src": "logoo.png",
         "sizes": "64x64 32x32 24x24 16x16",
         "type": "image/png"
       },
       {
-        "src": "icon.svg",
+        "src": "logoo.svg",
         "type": "image/svg+xml",
         "sizes": "192x192"
       },
       {
-        "src": "icon.svg",
+        "src": "logoo.svg",
         "type": "image/svg+xml",
         "sizes": "512x512"
       }
