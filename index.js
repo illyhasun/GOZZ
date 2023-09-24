@@ -6,6 +6,8 @@ const i18next = require('i18next');
 const Backend = require('i18next-node-fs-backend');
 const i18nextMiddleware = require('i18next-http-middleware');
 const path = require('path');
+const https = require('https');
+const fs = require('fs');
 
 // Херь шоб монгус не ругався
 mongoose.set('strictQuery', true);
@@ -45,6 +47,28 @@ const determineUserLanguage = (req, res, next) => {
   req.language = language;
   i18nextMiddleware.handle(i18next)(req, res, next);
 };
+
+
+//для сервера
+
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/gozz.com.ua/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/gozz.com.ua/cert.pem', 'utf8');
+const ca = fs.readFileSync('/etc/letsencrypt/live/gozz.com.ua/chain.pem', 'utf8');
+
+const credentials = {
+  key: privateKey,
+  cert: certificate,
+  ca: ca
+};
+
+const httpsServer = https.createServer(credentials, app);
+
+httpsServer.listen(443, () => {
+  console.log(`HTTPS Server is running on port 443`);
+});
+
+//
+
 
 app.use(determineUserLanguage);
 
