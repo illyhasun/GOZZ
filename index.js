@@ -49,27 +49,6 @@ const determineUserLanguage = (req, res, next) => {
 };
 
 
-//для сервера
-
-const privateKey = fs.readFileSync('/etc/letsencrypt/live/gozz.com.ua/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('/etc/letsencrypt/live/gozz.com.ua/cert.pem', 'utf8');
-const ca = fs.readFileSync('/etc/letsencrypt/live/gozz.com.ua/chain.pem', 'utf8');
-
-const credentials = {
-  key: privateKey,
-  cert: certificate,
-  ca: ca
-};
-
-const httpsServer = https.createServer(credentials, app);
-
-httpsServer.listen(443, () => {
-  console.log(`HTTPS Server is running on port 443`);
-});
-
-//
-
-
 app.use(determineUserLanguage);
 
 app.use('/uploads', express.static('uploads'));
