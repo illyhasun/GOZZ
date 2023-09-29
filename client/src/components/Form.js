@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import { useHttp } from '../hooks/useHttpHook';
 import Preloader from './Preloader';
 
@@ -10,11 +11,7 @@ const Form = () => {
     const [form, setForm] = useState({ name: '', phone: '', mail: '', text: '' })
 
     const formRef = useRef();
-
-    const scrollToForm = () => {
-        formRef.current.scrollIntoView({ behavior: 'smooth' });
-    };
-
+    const messageRef = useRef();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -31,17 +28,17 @@ const Form = () => {
             console.log(e)
         }
     }
-    if (error && error.length > 0) {
-        console.log(error)
-        scrollToForm();
-    }
-    const messageRef = useRef();
-
     useEffect(() => {
         if (message && messageRef.current) {
             messageRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     }, [message]);
+
+    useEffect(() => {
+        if (error && error.length > 0) {
+            formRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [error]);
 
     return (
         <div className='form-container' ref={formRef}>
@@ -117,7 +114,7 @@ const Form = () => {
             </div>
             {loading ? <Preloader /> :
                 message && <li className='message' ref={messageRef}>{message}</li>
-                }
+            }
         </div>
     );
 };
