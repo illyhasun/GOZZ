@@ -45,8 +45,13 @@ router.post('/customer',
             const mailOptions = {
                 from: config.get('gmail'),
                 to: 'hukkristina2511@gmail.com',
-                subject: `Тут ${name} заявку залишив`,
-                text: `імя ${name} номер телефону ${phone}, пошта ${mail} текст: ${text} `,
+                subject: `${name} залишив заявку`,
+                html: `
+                <p><strong>Імя:</strong> ${name}</p>
+                <p><strong>Номер телефону:</strong> ${phone}</p>
+                <p><strong>Пошта:</strong> ${mail}</p>
+                <p><strong>Текст:</strong> ${text}</p>
+                `
             };
 
             transporter.sendMail(mailOptions, (error, info) => {
