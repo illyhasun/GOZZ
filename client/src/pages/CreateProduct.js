@@ -4,7 +4,7 @@ import { useHttp } from '../hooks/useHttpHook';
 import Preloader from '../components/Preloader';
 
 const CreateProduct = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const { req, loading, error, message } = useHttp();
   const [formValues, setFormValues] = useState({
     csTitle: '',
@@ -142,7 +142,7 @@ const CreateProduct = () => {
         <div className='send-product'>
           <input type="file" name="photo" accept="image/jpeg, image/png" onChange={handlePhotoChange} required />
           <button type="submit" disabled={loading} className='leaf_button'>
-            {loading ? t('creatingProduct') : t('createProduct')}
+            {loading ? 'Створення продукту' : 'Створити продукт'}
           </button>
         </div>
       </form>
