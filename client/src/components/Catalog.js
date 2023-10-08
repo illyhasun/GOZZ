@@ -13,7 +13,7 @@ function Catalog() {
 
 
   const auth = useContext(AuthContext);
-  const [visibleProducts, setVisibleProducts] = useState();
+  const [visibleProducts, setVisibleProducts] = useState(6);
   const [showLessButton, setShowLessButton] = useState(false);
   const [arrowRotated, setArrowRotated] = useState(false);
 
@@ -31,13 +31,15 @@ function Catalog() {
 
 
   useEffect(() => {
-    const updateVisibleProductsPerRow = () => {
-      setVisibleProducts(window.innerWidth < 600 ? 3 : (window.innerWidth < 1000 ? 4 : 6));
-    };
-    updateVisibleProductsPerRow();
-    window.addEventListener('resize', updateVisibleProductsPerRow);
-    return () => window.removeEventListener('resize', updateVisibleProductsPerRow);
-  }, []);
+    if(!arrowRotated){
+      const updateVisibleProductsPerRow = () => {
+        setVisibleProducts(window.innerWidth < 600 ? 3 : (window.innerWidth < 1000 ? 4 : 6));
+      };
+      updateVisibleProductsPerRow();
+      window.addEventListener('resize', updateVisibleProductsPerRow);
+      return () => window.removeEventListener('resize', updateVisibleProductsPerRow);
+    }
+  }, [arrowRotated]);
 
   const handleProductClick = (product) => {
     if (product) {
@@ -83,6 +85,14 @@ function Catalog() {
     fetchData();
   }, [req, i18n.language]);
 
+  useEffect(() => {
+    if (isDetailWindowOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isDetailWindowOpen]);
+
   return (
     <div id='catalog' ref={catalogRef} className='catalog-container'>
       <div className='catalog-text'>
@@ -99,11 +109,14 @@ function Catalog() {
               key={product._id}
               className={`products ${index >= visibleProducts ? 'hidden-product' : ''}`}
               style={{ transitionDelay: `${100}ms` }}
-              onClick={() => handleProductClick(product)}
             >
-              <img className='product-photo' src={product.photo} alt={product[i18n.language]?.title} />
+              <img className='product-photo' 
+              src={product.photo} 
+              alt={product[i18n.language]?.title} 
+              onClick={() => handleProductClick(product)}
+              />
               <div className='product-text'>
-                <h2>{product[i18n.language]?.title}</h2>
+                <h2 onClick={() => handleProductClick(product)}>{product[i18n.language]?.title}</h2>
 
                 {auth.isAuthenticated ? (
                   <img onClick={() => deleteProduct(product._id)} src='/icons/trash.svg' alt='info' />

@@ -59,7 +59,7 @@ const ProductValidationRules = [
                 throw new Error(req.t('photoType') + allowedImageTypes.join(', '))
             }
 
-            const maxFileSizeInBytes = 5 * 1024 * 1024;
+            const maxFileSizeInBytes = 50 * 1024 * 1024;
             if (req.file && req.file.size > maxFileSizeInBytes) {
                 throw new Error('File size exceeds the maximum limit of 5MB.')
             }
