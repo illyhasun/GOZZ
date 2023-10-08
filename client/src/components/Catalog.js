@@ -13,7 +13,7 @@ function Catalog() {
 
 
   const auth = useContext(AuthContext);
-  const [visibleProducts, setVisibleProducts] = useState(6);
+  const [visibleProducts, setVisibleProducts] = useState();
   const [showLessButton, setShowLessButton] = useState(false);
   const [arrowRotated, setArrowRotated] = useState(false);
 
